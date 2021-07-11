@@ -4,6 +4,7 @@ module.exports = require('yargs')
     .describe('mqtt-url', 'mqtt broker url.')
     .describe('name', 'topic prefix')
     .describe('ups-name', 'UPS Name. Is overwritten if apcupsd supplies a name')
+    .describe('apcupsdconf', 'apcupsd configuration file')
     .describe('interval', 'Interval in seconds to poll apcaccess')
     .describe('publish-changes-only', 'Don\'t publish unchanged values')
     .boolean('publish-changes-only')
@@ -14,6 +15,7 @@ module.exports = require('yargs')
         m: 'mqtt-url',
         n: 'name',
         u: 'ups-name',
+        a: 'apcupsdconf',
         v: 'verbosity'
     })
     .default({
@@ -21,6 +23,7 @@ module.exports = require('yargs')
         mqttUrl: 'mqtt://127.0.0.1',
         name: 'ups',
         upsName: 'ups',
+        apcupsdconf: '/etc/apcupsd/apcupsd.conf',
         verbosity: 'info'
     })
     .version()
