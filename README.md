@@ -12,6 +12,12 @@
 This is a fork of https://github.com/cyberjunky/node-apcupsd - modified to follow 
 [mqtt-smarthome architectural proposal](https://mqtt-smarthome/mqtt-smarthome).
 
+## Fork updates
+Added option to pass specific `apcupsd.conf` config to `apcupsd2mqtt`.
+Example `apcupsd2mqtt -a /etc/apcupsd.conf`
+
+This change allows to run multiple instances of apcupsd2mqtt accessing multiple running instances of apcupsd in order to monitor multiple UPS devices.
+
 ## Install
 
 `$ sudo npm install -g apcupsd2mqtt`
