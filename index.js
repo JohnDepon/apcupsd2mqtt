@@ -39,7 +39,7 @@ function executeCmd(cmd, callback) {
 }
 
 function poll() {
-    executeCmd('apcaccess', (err, response) => {
+    executeCmd('apcaccess -f ' + config.apcupsdconf, (err, response) => {
         if (err) {
             log.error(err);
         } else {
