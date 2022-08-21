@@ -2,6 +2,8 @@ module.exports = require('yargs')
     .env('APCUPSD2MQTT')
     .usage('Usage: $0 [options]')
     .describe('mqtt-url', 'mqtt broker url.')
+    .describe('mqtt-user', 'mqtt broker user.')
+    .describe('mqtt-password', 'mqtt broker password.')
     .describe('name', 'topic prefix')
     .describe('ups-name', 'UPS Name. Is overwritten if apcupsd supplies a name')
     .describe('apcupsdconf', 'apcupsd configuration file')
@@ -13,6 +15,8 @@ module.exports = require('yargs')
         h: 'help',
         i: 'interval',
         m: 'mqtt-url',
+        t: 'mqtt-user',
+        p: 'mqtt-password',    
         n: 'name',
         u: 'ups-name',
         a: 'apcupsdconf',
