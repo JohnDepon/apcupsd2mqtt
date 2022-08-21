@@ -9,10 +9,36 @@ const config = require('./config.js');
 log.setLevel(config.verbosity);
 log.info(pkg.name + ' version ' + pkg.version + ' starting');
 
-const mqtt = Mqtt.connect(config.url);
+log.info(config);
+
+log.info({
+    clientId: 'apcupsd2mqtt',
+    clean: true,
+    connectTimeout: 4000,
+    username: config.mqttUser,
+    password: config.mqttPassword,
+    reconnectPeriod: 1000,
+  });
+
+let mqtt;
+if(config.mqttUser && config.mqttPassword){
+    mqtt = Mqtt.connect(config.mqttUrl, {
+        clientId: 'apcupsd2mqtt',
+        clean: true,
+        connectTimeout: 4000,
+        username: config.mqttUser,
+        password: config.mqttPassword,
+        reconnectPeriod: 1000,
+      }
+    );
+    log.info(1);
+}else{
+    mqtt = Mqtt.connect(config.mqttUrl);
+    log.info(2);
+}
 
 mqtt.on('connect', () => {
-    log.info('mqtt connected to', config.url);
+    log.info('mqtt connected to', config.mqttUrl);
 });
 
 mqtt.on('close', () => {
