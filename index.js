@@ -12,7 +12,7 @@ log.info(pkg.name + ' version ' + pkg.version + ' starting');
 log.info(config);
 
 log.info({
-    clientId: 'apcupsd2mqtt',
+    clientId: config.upsName,
     clean: true,
     connectTimeout: 4000,
     username: config.mqttUser,
@@ -23,7 +23,7 @@ log.info({
 let mqtt;
 if(config.mqttUser && config.mqttPassword){
     mqtt = Mqtt.connect(config.mqttUrl, {
-        clientId: 'apcupsd2mqtt',
+        clientId: config.upsName,
         clean: true,
         connectTimeout: 4000,
         username: config.mqttUser,
